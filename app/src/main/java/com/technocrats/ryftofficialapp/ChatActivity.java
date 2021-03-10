@@ -28,7 +28,6 @@ import java.util.List;
 public class ChatActivity extends AppCompatActivity {
     RecyclerView mRecyclerView;
     ChatsAdapter chatsAdapter;
-    View view;
     List<String> messageList=new ArrayList<>();
     List<String> userNamesList=new ArrayList<>();
     ImageButton sendMessage;
@@ -38,8 +37,6 @@ public class ChatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
-
-        setProdItemRecycler(messageList);
 
         Intent intent=getIntent();
         final String key=intent.getStringExtra("key");
@@ -92,6 +89,7 @@ public class ChatActivity extends AppCompatActivity {
                     }
                 });
         sendMessage=findViewById(R.id.chat_send_btn);
+        setProdItemRecycler(messageList);
         messageEditText=findViewById(R.id.chat_message_view);
         sendMessage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,7 +128,7 @@ public class ChatActivity extends AppCompatActivity {
 
     private void setProdItemRecycler(List<String> messageList) {
 
-        mRecyclerView= view.findViewById(R.id.messages_list);
+        mRecyclerView= findViewById(R.id.messages_list);
         RecyclerView.LayoutManager layoutManager= new LinearLayoutManager(getApplicationContext(), RecyclerView.VERTICAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
         chatsAdapter = new ChatsAdapter(this, messageList,userNamesList);
