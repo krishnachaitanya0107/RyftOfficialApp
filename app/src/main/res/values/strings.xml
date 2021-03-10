@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">RyftOfficial</string>
+    <string name="facebook_app_id">2954505858104651</string>
+    <string name="fb_login_protocol_scheme">fb2954505858104651</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

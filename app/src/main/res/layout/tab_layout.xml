@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#3b5999"
+    android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Project Details"
+        android:id="@+id/details"
+        android:textColor="#ffffff"
+        android:padding="7dp"
+        android:layout_marginStart="25dp"
+        android:layout_weight="1"
+        android:textSize="20sp">
+
+    </TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Development"
+        android:id="@+id/dev"
+        android:textColor="#ffffff"
+        android:layout_marginStart="20dp"
+        android:padding="10dp"
+        android:layout_weight="1"
+        android:textSize="15sp"/>
+
+</LinearLayout>

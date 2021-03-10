@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileFragment">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        app:cardCornerRadius="30dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="150dp"
+                android:layout_centerHorizontal="true"
+                android:layout_height="150dp"
+                android:layout_marginTop="50dp"
+                android:src="@drawable/com_facebook_profile_picture_blank_square"
+                app:civ_border_width="2dp"
+                android:id="@+id/imageView2"
+                app:civ_border_color="#fff"/>
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_below="@id/imageView2"
+                android:layout_marginLeft="100dp"
+                android:textColor="#000000"
+                android:fontFamily="sans-serif-light"
+                android:textSize="20sp"
+                android:text="Name" />
+            <TextView
+                android:id="@+id/nameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageView2"
+                android:layout_marginLeft="30dp"
+                android:fontFamily="sans-serif-light"
+                android:layout_toRightOf="@id/textView"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:layout_marginTop="50dp"
+                android:text="userName" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:fontFamily="sans-serif-light"
+                android:layout_marginLeft="100dp"
+                android:layout_below="@id/textView"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:text="Email" />
+            <TextView
+                android:id="@+id/emailTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/nameTextView"
+                android:fontFamily="sans-serif-light"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="180dp"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:layout_marginBottom="50dp"
+                android:text="userEmail" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

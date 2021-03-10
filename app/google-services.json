@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "757188364295",
+    "project_id": "ryft-official-app",
+    "storage_bucket": "ryft-official-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:757188364295:android:1cd1373bcbe0de4ddd42a2",
+        "android_client_info": {
+          "package_name": "com.technocrats.ryftofficialapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "757188364295-9rohsaagpou45064a7k6atr1mg6ujboo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.technocrats.ryftofficialapp",
+            "certificate_hash": "ce2a271b31fb7f5e5dc9c7a991f971c9fa9f49a2"
+          }
+        },
+        {
+          "client_id": "757188364295-n81oh9m31rciri600ul7s3nj0plc9l8a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZnk0okWigbAWeZw_BNe58XQcxNtCdM-Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "757188364295-n81oh9m31rciri600ul7s3nj0plc9l8a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
