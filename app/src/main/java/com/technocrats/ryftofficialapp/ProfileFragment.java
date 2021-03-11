@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,6 +29,7 @@ public class ProfileFragment extends Fragment {
     private FirebaseAuth mauth;
     TextView nameTextView,emailTextView;
     ImageView photoImageView;
+    Button SignOutButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,6 +44,7 @@ public class ProfileFragment extends Fragment {
         mauth=FirebaseAuth.getInstance();
         FirebaseUser user=mauth.getCurrentUser();
         nameTextView=getView().findViewById(R.id.nameTextView);
+        SignOutButton=getView().findViewById(R.id.SignOutButton);
         emailTextView=getView().findViewById(R.id.emailTextView);
         photoImageView=getView().findViewById(R.id.imageView2);
         if(user==null)
@@ -67,6 +70,12 @@ public class ProfileFragment extends Fragment {
             }
 
             }
+            SignOutButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mauth.signOut();
+                }
+            });
     }
 
     public static class ImageDownloader extends AsyncTask<String,Void, Bitmap>

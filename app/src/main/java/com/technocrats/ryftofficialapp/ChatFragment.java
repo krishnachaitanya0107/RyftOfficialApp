@@ -57,7 +57,7 @@ public class ChatFragment extends Fragment {
                     .addChildEventListener(new ChildEventListener() {
                         @Override
                         public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                            groups.add(snapshot.getValue().toString());
+                            groups.add(snapshot.getValue().toString()+" group");
                             keys.add(snapshot.getKey());
                             arrayAdapter.notifyDataSetChanged();
                         }

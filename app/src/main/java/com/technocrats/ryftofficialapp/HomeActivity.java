@@ -1,5 +1,7 @@
 package com.technocrats.ryftofficialapp;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -63,4 +65,11 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        SharedPreferences.Editor editor= getSharedPreferences("preferences", Context.MODE_PRIVATE).edit();
+        editor.remove("filter");
+        editor.apply();
+    }
 }
