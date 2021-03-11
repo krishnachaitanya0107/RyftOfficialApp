@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -52,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth=FirebaseAuth.getInstance();
         user =mAuth.getCurrentUser();
-        loginButton=findViewById(R.id.facebookLoginInButton);
         InitializeFacebook();
         InitializeGoogleLogin();
     }
@@ -68,9 +68,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void InitializeFacebook() {
-
-        loginButton.setReadPermissions(Arrays.asList(EMAIL));
         callbackManager = CallbackManager.Factory.create();
+        loginButton=findViewById(R.id.facebookLoginInButton);
+        loginButton.setReadPermissions(Arrays.asList(EMAIL));
         loginButton.registerCallback(callbackManager,
                 new FacebookCallback<LoginResult>() {
                     @Override
@@ -111,7 +111,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                 } else
                 {
-                    Toast.makeText(MainActivity.this,"Login Failed",Toast.LENGTH_SHORT).show();
+                    Log.i("error",task.getException().toString());
+                    Toast.makeText(MainActivity.this, task.getException().getLocalizedMessage(),Toast.LENGTH_SHORT).show();
                 }
             }
         });
