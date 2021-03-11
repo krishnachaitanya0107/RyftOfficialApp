@@ -111,8 +111,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                 } else
                 {
-                    Log.i("error",task.getException().toString());
-                    Toast.makeText(MainActivity.this, task.getException().getLocalizedMessage(),Toast.LENGTH_SHORT).show();
+                    Log.i("error", task.getException().getLocalizedMessage());
+                    Toast.makeText(MainActivity.this, "Login Failed",Toast.LENGTH_SHORT).show();
                 }
             }
         });
