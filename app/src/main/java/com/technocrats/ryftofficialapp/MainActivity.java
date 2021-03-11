@@ -50,11 +50,11 @@ public class MainActivity extends AppCompatActivity {
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_main);
 
+        mAuth=FirebaseAuth.getInstance();
+        user =mAuth.getCurrentUser();
         loginButton=findViewById(R.id.facebookLoginInButton);
         InitializeFacebook();
         InitializeGoogleLogin();
-        mAuth=FirebaseAuth.getInstance();
-        user =mAuth.getCurrentUser();
     }
 
     private void InitializeGoogleLogin() {
@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(new Intent(MainActivity.this, HomeActivity.class));
                         finish();}
                     catch (Exception e)
-                    {
+                    {   e.printStackTrace();
                         Toast.makeText(MainActivity.this,"Login Failed",Toast.LENGTH_SHORT).show();
                     }
                 } else

@@ -74,6 +74,9 @@ public class ProfileFragment extends Fragment {
                 @Override
                 public void onClick(View view) {
                     mauth.signOut();
+                    Intent intent=new Intent(getContext(),MainActivity.class);
+                    intent.putExtra("fromActivity","profileFragment");
+                    startActivity(intent);
                 }
             });
     }

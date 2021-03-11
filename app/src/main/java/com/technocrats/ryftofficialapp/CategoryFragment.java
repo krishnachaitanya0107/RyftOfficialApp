@@ -36,9 +36,7 @@ public class CategoryFragment extends Fragment {
 
         ml.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                addFilter("ml");
-            }
+            public void onClick(View view) { addFilter("ml"); }
         });
         Ios.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,8 +72,7 @@ public class CategoryFragment extends Fragment {
 
     public void addFilter(String filter)
     {
-        SharedPreferences.Editor editor= (SharedPreferences.Editor)
-                getContext().getSharedPreferences("preferences", Context.MODE_PRIVATE).edit();
+        SharedPreferences.Editor editor= getContext().getSharedPreferences("preferences", Context.MODE_PRIVATE).edit();
         editor.putString("filter",filter);
         editor.apply();
         Toast.makeText(getContext(),"Filter applied successfully !!",Toast.LENGTH_SHORT).show();

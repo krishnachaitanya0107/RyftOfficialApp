@@ -31,17 +31,18 @@ public class FeedFragment extends Fragment {
     CustomAdapter adapter;
     View view;
     String category;
+    Context context;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_feed, container, false);
-
+        context=getContext();
         setProdItemRecycler(ModelList);
         try
         {
-            SharedPreferences preferences=getContext().getSharedPreferences("preferences", Context.MODE_PRIVATE);
+            SharedPreferences preferences=context.getSharedPreferences("preferences", Context.MODE_PRIVATE);
             category=preferences.getString("filter",null);
         } catch (Exception e)
         {
@@ -89,6 +90,15 @@ public class FeedFragment extends Fragment {
 
         return view;
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        SharedPreferences.Editor editor=context.getSharedPreferences("preferences", Context.MODE_PRIVATE).edit();
+        editor.remove("filter");
+        editor.apply();
+    }
+
     private void setProdItemRecycler(List<Model> productsList){
 
         mRecyclerView= view.findViewById(R.id.recyclerView);

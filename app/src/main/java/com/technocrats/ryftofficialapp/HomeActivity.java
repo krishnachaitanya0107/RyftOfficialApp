@@ -68,8 +68,5 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        SharedPreferences.Editor editor= getSharedPreferences("preferences", Context.MODE_PRIVATE).edit();
-        editor.remove("filter");
-        editor.apply();
     }
 }

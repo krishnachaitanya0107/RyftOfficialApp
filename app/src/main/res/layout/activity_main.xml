@@ -73,7 +73,8 @@
                 android:layout_centerVertical="true"
                 android:paddingLeft="@dimen/large_intrinsic_padding"
                 android:paddingRight="@dimen/large_intrinsic_padding"
-                app:srcCompat="@drawable/ic_bt_login_google" />
+                app:srcCompat="@drawable/ic_bt_login_google"
+                android:layout_alignParentLeft="true" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -98,8 +99,8 @@
 
 
             <com.facebook.login.widget.LoginButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:textStyle="bold"
                 android:layout_centerInParent="true"
                 android:id="@+id/facebookLoginInButton"
