@@ -132,7 +132,7 @@ public class DevFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-
+                final boolean[] certified = {false};
                     FirebaseDatabase.getInstance().getReference().child("submissions").
                             child(projectId).addChildEventListener(new ChildEventListener() {
                         @Override
@@ -146,6 +146,7 @@ public class DevFragment extends Fragment {
                             }
                             if(userEmail.equals(tempEmail)&& evaluated != null)
                             {   //if user is certified
+                                certified[0] =true;
                                 Toast.makeText(getContext(),
                                         "you are certified , you will recieve your certificate by email "
                                         ,Toast.LENGTH_SHORT).show();
@@ -161,6 +162,12 @@ public class DevFragment extends Fragment {
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) { }
                     });
+                    if(!certified[0])
+                    {
+                        Toast.makeText(getContext(),
+                                "Please submit link or please wait for your submission to be evaluated "
+                                ,Toast.LENGTH_SHORT).show();
+                    }
             }
         });
 

@@ -159,7 +159,8 @@ public class MainActivity extends AppCompatActivity {
                             SendUserData(user);
                         }
                         else
-                        {
+                        {   Toast.makeText(getApplicationContext(),"Login Failed"
+                                ,Toast.LENGTH_SHORT).show();
                             user=null;
                         }
                     }
