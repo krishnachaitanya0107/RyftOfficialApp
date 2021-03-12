@@ -39,7 +39,6 @@ public class ChatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
-        getActionBar().setTitle("Chats ");
         Intent intent=getIntent();
         final String key=intent.getStringExtra("key");
         FirebaseDatabase.getInstance().getReference().child("chat groups")
@@ -120,9 +119,6 @@ public class ChatActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Message sent",Toast.LENGTH_SHORT).show();
 
                     messageEditText.setText("");
-                    messageList.add(tempMessage);
-                    userNamesList.add(userName);
-                    chatsAdapter.notifyDataSetChanged();
                 }
             }
         });
