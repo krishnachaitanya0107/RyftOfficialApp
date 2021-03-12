@@ -21,7 +21,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -37,7 +39,7 @@ public class ChatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
-
+        getActionBar().setTitle("Chats ");
         Intent intent=getIntent();
         final String key=intent.getStringExtra("key");
         FirebaseDatabase.getInstance().getReference().child("chat groups")
@@ -114,9 +116,10 @@ public class ChatActivity extends AppCompatActivity {
                     message.put("user id",userId);
                     FirebaseDatabase.getInstance().getReference().child("chat groups")
                             .child(key).child("messages").push()
-                            .setValue(message);
+                            .setValue(message, -System.currentTimeMillis());
                     Toast.makeText(getApplicationContext(),"Message sent",Toast.LENGTH_SHORT).show();
 
+                    messageEditText.setText("");
                     messageList.add(tempMessage);
                     userNamesList.add(userName);
                     chatsAdapter.notifyDataSetChanged();
