@@ -53,6 +53,7 @@ public class FeedFragment extends Fragment {
 
     public void showFeed()
     {
+        ModelList.clear();
         FirebaseDatabase.getInstance().getReference().child("posts").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
@@ -124,7 +125,7 @@ public class FeedFragment extends Fragment {
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
-                        difficulty=menuItem.getTitle().toString();
+                        difficulty=menuItem.getTitle().toString().toLowerCase();
                         showFeed();
                         return true;
                     }

@@ -2,25 +2,25 @@
 
     <item
         android:id="@+id/ai"
-        android:title="ai"/>
+        android:title="AI"/>
 
     <item
         android:id="@+id/ios"
-        android:title="Ios"/>
+        android:title="IOS"/>
 
     <item
         android:id="@+id/android"
         android:title="Android"/>
     <item
         android:id="@+id/iot"
-        android:title="Iot"/>
+        android:title="IOT"/>
 
     <item
         android:id="@+id/blockChain"
-        android:title="blockchain"/>
+        android:title="BlockChain"/>
 
     <item
         android:id="@+id/web"
-        android:title="web"/>
+        android:title="Website"/>
 
 </menu>
