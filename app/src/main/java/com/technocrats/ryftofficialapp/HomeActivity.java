@@ -1,7 +1,5 @@
 package com.technocrats.ryftofficialapp;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,8 +11,7 @@ public class HomeActivity extends AppCompatActivity {
     MeowBottomNavigation bottomNavigation;
     private final static int ID_HOME=1;
     private final static int ID_CHAT=2;
-    private final static int ID_CATEGORIES=3;
-    private final static int ID_PROFILE=4;
+    private final static int ID_PROFILE=3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +21,7 @@ public class HomeActivity extends AppCompatActivity {
         bottomNavigation = findViewById(R.id.btNav);
         bottomNavigation.add(new MeowBottomNavigation.Model(1, R.drawable.ic_home));
         bottomNavigation.add(new MeowBottomNavigation.Model(2, R.drawable.ic_chat));
-        bottomNavigation.add(new MeowBottomNavigation.Model(3, R.drawable.ic_categories));
-        bottomNavigation.add(new MeowBottomNavigation.Model(4, R.drawable.ic_baseline_person_pin_24));
+        bottomNavigation.add(new MeowBottomNavigation.Model(3, R.drawable.ic_baseline_person_pin_24));
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new FeedFragment()).commit();
         bottomNavigation.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
@@ -46,9 +42,6 @@ public class HomeActivity extends AppCompatActivity {
                         break;
                     case ID_CHAT:
                         select_fragment = new ChatFragment();
-                        break;
-                    case ID_CATEGORIES:
-                        select_fragment = new CategoryFragment();
                         break;
                     case ID_PROFILE:
                         select_fragment = new ProfileFragment();

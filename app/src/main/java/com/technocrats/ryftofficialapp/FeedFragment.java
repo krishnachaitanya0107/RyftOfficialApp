@@ -6,8 +6,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.PopupMenu;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,8 +33,11 @@ public class FeedFragment extends Fragment {
     RecyclerView mRecyclerView;
     CustomAdapter adapter;
     View view;
-    String category;
+    String category=null;
+    String duration=null;
+    String difficulty=null;
     Context context;
+    ImageView techFilter,durationFilter,difficultyFilter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -40,15 +46,13 @@ public class FeedFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_feed, container, false);
         context=getContext();
         setProdItemRecycler(ModelList);
-        try
-        {
-            SharedPreferences preferences=context.getSharedPreferences("preferences", Context.MODE_PRIVATE);
-            category=preferences.getString("filter",null);
-        } catch (Exception e)
-        {
-            category=null;
-        }
+        showFeed();
 
+        return view;
+    }
+
+    public void showFeed()
+    {
         FirebaseDatabase.getInstance().getReference().child("posts").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
@@ -60,10 +64,27 @@ public class FeedFragment extends Fragment {
                 {   tempCategory="";
                     e.printStackTrace();
                 }
-                if(category==null)
+                String tempDuration;
+                try{
+                    tempDuration=snapshot.child("duration").getValue().toString();
+                }
+                catch (Exception e)
+                {   tempDuration="";
+                    e.printStackTrace();
+                }
+                String tempDifficulty;
+                try{
+                    tempDifficulty=snapshot.child("difficulty").getValue().toString();
+                }
+                catch (Exception e)
+                {   tempDifficulty="";
+                    e.printStackTrace();
+                }
+                if(category==null && difficulty==null && duration==null)
                 { createFeedItem(snapshot); }
-                else if(tempCategory.equals(category))
-                    { createFeedItem(snapshot); }
+                else if(tempCategory.equals(category) || tempDifficulty.equals(difficulty)
+                        || tempDuration.equals(duration))
+                { createFeedItem(snapshot); }
             }
 
             @Override
@@ -86,17 +107,71 @@ public class FeedFragment extends Fragment {
 
             }
         });
+    }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        techFilter=getView().findViewById(R.id.expandTech);
+        durationFilter=getView().findViewById(R.id.expandDur);
+        difficultyFilter=getView().findViewById(R.id.expandDiff);
+        difficultyFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popupMenu=new PopupMenu(getContext(),difficultyFilter);
+                popupMenu.getMenuInflater().inflate(R.menu.difficultypopupmenu,popupMenu.getMenu());
 
-        return view;
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        difficulty=menuItem.getTitle().toString();
+                        showFeed();
+                        return true;
+                    }
+                });
+                popupMenu.show();
+            }
+        });
+
+        durationFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popupMenu=new PopupMenu(getContext(),durationFilter);
+                popupMenu.getMenuInflater().inflate(R.menu.durationpopupmenu,popupMenu.getMenu());
+
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        duration=menuItem.getTitle().toString();
+                        showFeed();
+                        return true;
+                    }
+                });
+                popupMenu.show();
+            }
+        });
+        techFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popupMenu=new PopupMenu(getContext(),techFilter);
+                popupMenu.getMenuInflater().inflate(R.menu.techpopupmenu,popupMenu.getMenu());
+
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        category=menuItem.getTitle().toString();
+                        showFeed();
+                        return true;
+                    }
+                });
+                popupMenu.show();
+            }
+        });
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        SharedPreferences.Editor editor=context.getSharedPreferences("preferences", Context.MODE_PRIVATE).edit();
-        editor.remove("filter");
-        editor.apply();
     }
 
     private void setProdItemRecycler(List<Model> productsList){

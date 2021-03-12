@@ -1,0 +1,26 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/ai"
+        android:title="ai"/>
+
+    <item
+        android:id="@+id/ios"
+        android:title="Ios"/>
+
+    <item
+        android:id="@+id/android"
+        android:title="Android"/>
+    <item
+        android:id="@+id/iot"
+        android:title="Iot"/>
+
+    <item
+        android:id="@+id/blockChain"
+        android:title="blockchain"/>
+
+    <item
+        android:id="@+id/web"
+        android:title="web"/>
+
+</menu>
